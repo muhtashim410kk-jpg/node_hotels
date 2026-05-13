@@ -45,6 +45,21 @@ router.get('/:Taste',async(req,res)=>{
 
 })
 
+router.get('/',async(req,res)=>{
+    
+   try{
+      
+      const data = await Menuitem.find();
+      res.status(200).json(data)
+
+   }catch(error){
+      res.status(500).json({"message":"Internal server error"})
+   }
+
+   
+
+})
+
 // checking it on github 
 
 module.exports = router;
