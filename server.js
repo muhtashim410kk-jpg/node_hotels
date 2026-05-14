@@ -4,12 +4,14 @@ const app = express();
 const passport = require('passport')
 const Local_strategy = require('passport-local').Strategy;
 const Person = require('./models/person')
+require('dotenv').config();
 
 
 const bodyparser = require('body-parser')
 
 app.use(bodyparser.json())
 app.use(passport.initialize())
+const PORT= process.env.PORT || 3200;
 
 const localauth = passport.authenticate('local',({session:false}))
 
@@ -56,7 +58,7 @@ app.use('/menu',menuroutes)
 app.use('/person',localauth,personroutes)
 
 
-app.listen(3200)
+app.listen(PORT)
 
 
 

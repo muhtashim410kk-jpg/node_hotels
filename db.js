@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+require('dotenv').config();
 
-//const url = 'mongodb://localhost:27017/orangetrain'
-const url = "mongodb+srv://muhtashim:muhtashim123@cluster0.8xwtcg3.mongodb.net/"
+const url = process.env.MONGO_URL_LOCAL;
+//const url = process.env.MONGO_URL
 
 mongoose.connect(url)
 
