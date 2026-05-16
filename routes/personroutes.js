@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Person = require('./../models/person')
+const generatetoken =require('./../jwt')
 
 
 router.get('/',async(req,res)=>{
@@ -18,20 +19,20 @@ router.get('/',async(req,res)=>{
     
 })
 
-router.post('/',async(req,res)=>{
+router.post('/signup',async(req,res)=>{
     
-       try{
+      
          
         const Persondata = req.body;
         const newPersondata = new Person(Persondata);
 
         const response = await newPersondata.save();
         res.status(200).json(response)
+        const token = generatetoken(response.username)
+        console.log("token is",token);
+        
+}
 
-       }catch(error){
-              res.status(500).json({"message":"internal server error"})
-       }
-
-})
+)
 
 module.exports= router;

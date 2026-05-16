@@ -55,7 +55,7 @@ const personroutes = require('./routes/personroutes');
 
 
 app.use('/menu',menuroutes)
-app.use('/person',localauth,personroutes)
+app.use('/person',personroutes)
 
 
 app.listen(PORT)
